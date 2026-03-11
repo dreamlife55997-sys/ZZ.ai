@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zz AI — Elvion Global | Advanced Smartphone Control</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description"
+    content="Zz is a next-generation AI control system by Elvion Global that interacts with smartphone functions, automates tasks, and simplifies technology.">
+  <meta name="keywords" content="Elvion Global, Zz AI, Smartphone Automation, AI Assistant, Jarvis AI, Tech Startup">
+
+  <!-- CSS Links -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+  <!-- Background Grid & particle canvas -->
+  <div class="grid-overlay"></div>
+  <canvas id="particles-bg"></canvas>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="container">
+      <div class="logo">
+        <svg class="ai-reactor" width="45" height="45" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <!-- Nucleus Cluster -->
+          <g class="nucleus-cluster">
+            <circle cx="45" cy="45" r="8" fill="var(--primary-glow)" />
+            <circle cx="55" cy="45" r="8" fill="rgba(255, 255, 255, 0.9)" />
+            <circle cx="50" cy="55" r="8" fill="var(--secondary-glow)" />
+            <circle class="nucleus-glow" cx="50" cy="50" r="16" fill="var(--primary-glow)" opacity="0.3" />
+          </g>
+
+          <!-- Orbit 1 (Vertical-ish) -->
+          <g class="orbit-container orbit-1">
+            <ellipse cx="50" cy="50" rx="20" ry="45" fill="none" stroke="rgba(255, 255, 255, 0.5)" stroke-width="2.5"
+              transform="rotate(30 50 50)" />
+            <!-- The electron dot needs to be positioned on the rotated coordinate system -->
+            <!-- A trick is to put the electron in a standard unrotated container and rotate that container -->
+          </g>
+
+          <!-- Orbit 2 (Horizontal-ish) -->
+          <g class="orbit-container orbit-2">
+            <ellipse cx="50" cy="50" rx="45" ry="20" fill="none" stroke="rgba(255, 255, 255, 0.5)" stroke-width="2.5"
+              transform="rotate(30 50 50)" />
+          </g>
+
+          <!-- Orbit 3 (Diagonal) -->
+          <g class="orbit-container orbit-3">
+            <ellipse cx="50" cy="50" rx="45" ry="20" fill="none" stroke="rgba(255, 255, 255, 0.5)" stroke-width="2.5"
+              transform="rotate(-30 50 50)" />
+          </g>
+
+          <!-- Electrons wrapper for animation -->
+          <g class="electron-ring el-ring-1">
+            <circle cx="50" cy="5" r="6" fill="#fff" filter="drop-shadow(0 0 4px var(--primary-glow))" />
+          </g>
+          <g class="electron-ring el-ring-2">
+            <circle cx="95" cy="50" r="6" fill="var(--primary-glow)"
+              filter="drop-shadow(0 0 4px var(--primary-glow))" />
+          </g>
+          <g class="electron-ring el-ring-3">
+            <circle cx="5" cy="50" r="6" fill="var(--secondary-glow)"
+              filter="drop-shadow(0 0 4px var(--primary-glow))" />
+          </g>
+        </svg>
+        ELVION <span>GLOBAL</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#home">Terminal</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#product">Zz System</a></li>
+        <li><a href="#how-it-works">Architecture</a></li>
+        <li><a href="#team">Command</a></li>
+        <li><a href="#contact">Access</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- SECTION 1 - HERO -->
+  <section id="home" class="hero">
+    <div class="container">
+      <div class="hero-content hidden">
+        <h1 class="glitch-hover">Zz — AI That Controls Your Phone</h1>
+        <p>A next-generation AI system designed to interact with and control smartphone functions, automate tasks, and
+          simplify human interaction with technology.</p>
+        <div class="hero-buttons">
+          <a href="#product" class="btn primary">Explore Zz</a>
+          <a href="#team" class="btn secondary">Meet the Team</a>
+        </div>
+      </div>
+      <div class="hero-visual hidden">
+        <div class="holo-ring ring-1"></div>
+        <div class="holo-ring ring-2"></div>
+        <div class="hero-orb">
+          <!-- The generated Orb image -->
+          <img src="assets/images/hero-orb.png" alt="Zz Holographic AI Core"
+            onerror="this.src='https://images.unsplash.com/photo-1618044733300-9472054094ee?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2 - ABOUT ELVION GLOBAL -->
+  <section id="about" class="about">
+    <div class="container">
+      <h2 class="section-title hidden">Elvion Global Directive</h2>
+      <div class="glass-panel scan-effect hidden">
+        <h3 style="color: var(--primary-glow); margin-bottom: 20px;"><i class="fa-solid fa-globe"></i> Company Mission
+        </h3>
+        <p>Elvion Global is a technology company focused on building advanced artificial intelligence systems. Our
+          mission is to seamlessly bridge the gap between human intention and digital execution, building interfaces
+          that feel less like software and more like an extension of thought.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3 - INTRODUCING ZZ & FEATURES -->
+  <section id="product" class="features">
+    <div class="container">
+      <h2 class="section-title hidden">System: Zz</h2>
+
+      <div style="text-align: center; max-width: 800px; margin: 0 auto 40px;" class="hidden">
+        <p style="font-size: 1.2rem; color: var(--text-main);">Zz is an advanced AI control system that interacts
+          directly with smartphone functions and applications. It enables users to automate workflows, control apps, and
+          execute tasks through intelligent commands.</p>
+      </div>
+
+      <div class="features-grid">
+        <!-- Feature 1 -->
+        <div class="glass-panel feature-card hidden">
+          <div class="feature-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
+          <h3>App Control</h3>
+          <p>Direct integration with the device OS, allowing Zz to independently launch, navigate, and utilize installed
+            applications on command.</p>
+        </div>
+        <!-- Feature 2 -->
+        <div class="glass-panel feature-card hidden">
+          <div class="feature-icon"><i class="fa-solid fa-bolt-lightning"></i></div>
+          <h3>Task Automation</h3>
+          <p>Intelligent cross-app workflow chaining. Say "Open calendar and email John" and Zz maps intent across
+            multiple software actions.</p>
+        </div>
+        <!-- Feature 3 -->
+        <div class="glass-panel feature-card hidden">
+          <div class="feature-icon"><i class="fa-solid fa-microchip"></i></div>
+          <h3>Smart Device Interaction</h3>
+          <p>Low-level access to system controls. Manage hardware settings, network interfaces, and connectivity through
+            secure conversational commands.</p>
+        </div>
+        <!-- Feature 4 -->
+        <div class="glass-panel feature-card hidden">
+          <div class="feature-icon"><i class="fa-solid fa-brain"></i></div>
+          <h3>AI Intelligence Engine</h3>
+          <p>Predictive, context-aware command processing powered by an advanced LLM architecture trained on UI/UX
+            interaction vectors.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4 - HOW ZZ WORKS -->
+  <section id="how-it-works" class="workflow">
+    <div class="container">
+      <h2 class="section-title hidden">Architecture Execution Flow</h2>
+
+      <div class="workflow-diagram">
+        <div class="workflow-node hidden" style="transition-delay: 0.1s;">
+          <i class="fa-solid fa-microphone-lines"></i> User Command
+        </div>
+        <div class="workflow-arrow hidden" style="transition-delay: 0.2s;"></div>
+
+        <div class="workflow-node hidden" style="transition-delay: 0.3s; background: rgba(0, 246, 255, 0.1);">
+          <i class="fa-solid fa-network-wired"></i> AI Command Engine
+        </div>
+        <div class="workflow-arrow hidden" style="transition-delay: 0.4s;"></div>
+
+        <div class="workflow-node hidden" style="transition-delay: 0.5s; background: rgba(0, 246, 255, 0.15);">
+          <i class="fa-solid fa-gears"></i> Automation Engine
+        </div>
+        <div class="workflow-arrow hidden" style="transition-delay: 0.6s;"></div>
+
+        <div class="workflow-node hidden" style="transition-delay: 0.7s; background: rgba(0, 246, 255, 0.2);">
+          <i class="fa-solid fa-layer-group"></i> App Interaction Layer
+        </div>
+        <div class="workflow-arrow hidden" style="transition-delay: 0.8s;"></div>
+
+        <div class="workflow-node hidden"
+          style="transition-delay: 0.9s; background: rgba(0, 246, 255, 0.3); border-color: #fff; box-shadow: 0 0 30px var(--primary-glow);">
+          <i class="fa-solid fa-check-double"></i> Device Execution
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5 - DEVELOPMENT STATUS -->
+  <section id="status" class="status">
+    <div class="container">
+      <h2 class="section-title hidden">Development Status</h2>
+
+      <div class="glass-panel status-dashboard scan-effect hidden">
+        <h3 style="text-align: center; margin-bottom: 30px; color: var(--text-main);">Project Designation: <span
+            style="color: var(--primary-glow);">IN PRODUCTION</span></h3>
+
+        <div style="margin-bottom: 20px;">
+          <div
+            style="display: flex; justify-content: space-between; margin-bottom: 10px; font-family: var(--font-subheading);">
+            <span>System Core Architecture</span>
+            <span style="color: var(--primary-glow);">65%</span>
+          </div>
+          <div class="progress-container">
+            <div class="progress-bar" style="width: 65%;"></div>
+          </div>
+        </div>
+
+        <div
+          style="display: flex; justify-content: space-between; margin-top: 30px; font-size: 0.9rem; color: var(--text-muted); text-transform: uppercase;">
+          <span><i class="fa-solid fa-circle-dot"
+              style="color: #00F6FF; font-size: 10px; margin-right: 5px; animation: pulseGlow 2s infinite;"></i> Phase 2
+            Active</span>
+          <span>Target: Android Alpha v1.0</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 6 & 7 - FOUNDERS AND TEAM -->
+  <section id="team" class="team">
+    <div class="container">
+      <h2 class="section-title hidden">Core Command</h2>
+
+      <!-- Founders Section -->
+      <div class="founders-container hidden">
+        <div class="glass-panel team-card scan-effect">
+          <div class="team-avatar">
+            <img src="assets/team/founder-yash.png" alt="SIDHANT JADHAV" onerror="this.src='  '">
+          </div>
+          <h4>SIDHANT JADHAV</h4>
+          <p>Founder of Zz</p>
+          <div style="margin-top: 15px; color: var(--text-muted); display: flex; justify-content: center; gap: 15px;">
+            <a href="#" style="color: inherit; transition: color 0.3s;"
+              onmouseover="this.style.color='var(--primary-glow)'" onmouseout="this.style.color='inherit'"><i
+                class="fa-brands fa-linkedin"></i></a>
+            <a href="#" style="color: inherit; transition: color 0.3s;"
+              onmouseover="this.style.color='var(--primary-glow)'" onmouseout="this.style.color='inherit'"><i
+                class="fa-brands fa-github"></i></a>
+          </div>
+        </div>
+
+        <div class="glass-panel team-card scan-effect">
+          <div class="team-avatar">
+            <img src="assets/team/founder-yash.png" alt="Yash Rathod" onerror="this.src='  '">
+          </div>
+          <h4>YASH RATHOD</h4>
+          <p>Founder of Elvion Global</p>
+          <div style="margin-top: 15px; color: var(--text-muted); display: flex; justify-content: center; gap: 15px;">
+            <a href="#" style="color: inherit; transition: color 0.3s;"
+              onmouseover="this.style.color='var(--primary-glow)'" onmouseout="this.style.color='inherit'"><i
+                class="fa-brands fa-linkedin"></i></a>
+            <a href="#" style="color: inherit; transition: color 0.3s;"
+              onmouseover="this.style.color='var(--primary-glow)'" onmouseout="this.style.color='inherit'"><i
+                class="fa-brands fa-github"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <h3 style="text-align: center; margin: 4rem 0 2rem; font-family: var(--font-heading); letter-spacing: 2px;"
+        class="hidden">Engineering & Ops</h3>
+
+      <!-- Team Grid -->
+      <div class="team-grid">
+        <!-- Dev 1 -->
+        <div class="glass-panel team-card hidden">
+          <div class="team-avatar" style="width: 100px; height: 100px;">
+            <img src="https://ui-avatars.com/api/?name=Dev+1&background=0f172a&color=00F6FF" alt="ABHIJEET">
+          </div>
+          <h4>ABHIJEET</h4>
+          <p>ANDROID APP DEVELOPER</p>
+        </div>
+        <!-- Dev 2 -->
+        <div class="glass-panel team-card hidden">
+          <div class="team-avatar" style="width: 100px; height: 100px;">
+            <img src="https://ui-avatars.com/api/?name=Dev+2&background=0f172a&color=00F6FF" alt="PAWAN">
+          </div>
+          <h4>PAWAN</h4>
+          <p>ANDROID APP DEVELOPER</p>
+        </div>
+        <!-- Dev 3 -->
+        <div class="glass-panel team-card hidden">
+          <div class="team-avatar" style="width: 100px; height: 100px;">
+            <img src="https://ui-avatars.com/api/?name=Dev+3&background=0f172a&color=00F6FF" alt="Vishwajeet">
+          </div>
+          <h4>Vishwajeet</h4>
+          <p>WEB APP DEVELOPER</p>
+        </div>
+        <!-- Marketing 1 -->
+        <div class="glass-panel team-card hidden">
+          <div class="team-avatar" style="width: 100px; height: 100px;">
+            <img src="https://ui-avatars.com/api/?name=Mark+1&background=0f172a&color=1A9BFF" alt="Marketing Lead">
+          </div>
+          <h4>Marketing Lead</h4>
+          <p>SIDHANT JADHAV</p>
+        </div>
+        <!-- Marketing 2 -->
+        <div class="glass-panel team-card hidden">
+          <div class="team-avatar" style="width: 100px; height: 100px;">
+            <img src="https://ui-avatars.com/api/?name=Mark+2&background=0f172a&color=1A9BFF"
+              alt="Marketing Strategist">
+          </div>
+          <h4>Marketing Strategist</h4>
+          <p>IT CAN BE YOU</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 8 - CONTACT / WAITLIST -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <h2 class="section-title hidden">Join the Future</h2>
+
+      <div class="glass-panel contact-form-container hidden"
+        style="max-width: 700px; margin: 0 auto; position: relative;">
+
+        <form id="contact-form" class="contact-form">
+          <div style="text-align: center; margin-bottom: 20px;">
+            <p style="color: var(--text-muted);">Transmitting request to Elvion servers. Apply for early system access.
+            </p>
+          </div>
+
+          <div class="form-group">
+            <input type="text" class="form-control" name="name" placeholder="INITIATE: Operator Name" required>
+          </div>
+
+          <div class="form-group">
+            <input type="email" class="form-control" name="email" placeholder="LINK: Secure Email Address" required>
+          </div>
+
+          <div class="form-group">
+            <textarea class="form-control" name="message" placeholder="DATAPACK: Specify intent or message..."
+              required></textarea>
+          </div>
+
+          <button type="submit" class="btn primary" style="width: 100%; letter-spacing: 2px;">Join the Future</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 9 - FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-logo">ELVION <span>GLOBAL</span></div>
+      <div class="footer-tagline">Building the Future of Artificial Intelligence</div>
+      <div style="margin: 20px 0;">
+        <span
+          style="background: rgba(0, 246, 255, 0.1); border: 1px solid var(--primary-glow); padding: 5px 15px; border-radius: 20px; font-size: 0.9rem; font-family: var(--font-heading); letter-spacing: 1px;">Product:
+          Zz AI Control System</span>
+      </div>
+      <div class="footer-copyright">
+        Copyright &copy; 2026 Elvion Global. All systems secure.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/particles.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>

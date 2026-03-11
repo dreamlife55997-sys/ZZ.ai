@@ -1,0 +1,893 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700&family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --bg-color: #05070a;
+  --bg-panel: #0f172a;
+  --primary-glow: #00F6FF;
+  --secondary-glow: #1A9BFF;
+  --text-main: #e2e8f0;
+  --text-muted: #94a3b8;
+  --font-heading: 'Orbitron', sans-serif;
+  --font-subheading: 'Rajdhani', sans-serif;
+  --font-body: 'Exo 2', sans-serif;
+  
+  --glass-bg: rgba(15, 23, 42, 0.4);
+  --glass-border: rgba(0, 246, 255, 0.1);
+  --glass-border-hover: rgba(0, 246, 255, 0.4);
+  --shadow-glow: 0 0 20px rgba(0, 246, 255, 0.2);
+  --shadow-glow-strong: 0 0 30px rgba(0, 246, 255, 0.5);
+  
+  --z-background: -1;
+  --z-base: 1;
+  --z-ui: 10;
+  --z-modal: 100;
+  --z-nav: 1000;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Background Grid Overlay */
+.grid-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: 
+    linear-gradient(rgba(0, 246, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 246, 255, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  z-index: var(--z-background);
+  pointer-events: none;
+}
+
+/* Particle Canvas */
+#particles-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: var(--z-background);
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+/* Containers */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: var(--z-base);
+}
+
+section {
+  padding: 6rem 0;
+  position: relative;
+}
+
+/* Typography styles */
+.section-title {
+  font-size: 2.5rem;
+  color: var(--primary-glow);
+  text-align: center;
+  margin-bottom: 3rem;
+  text-shadow: var(--shadow-glow);
+  position: relative;
+  display: block;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  max-width: 50%;
+  height: 2px;
+  background: var(--primary-glow);
+  box-shadow: var(--shadow-glow);
+}
+
+/* Glassmorphism Panel */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  padding: 2.5rem;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-panel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(0, 246, 255, 0.1),
+    transparent
+  );
+  transform: skewX(-20deg);
+  transition: left 0.7s ease;
+}
+
+.glass-panel:hover::before {
+  left: 150%;
+}
+
+.glass-panel:hover {
+  border-color: var(--glass-border-hover);
+  box-shadow: var(--shadow-glow);
+  transform: translateY(-5px);
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--text-main);
+  background: transparent;
+  border: 1px solid var(--primary-glow);
+  border-radius: 4px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  z-index: 1;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: rgba(0, 246, 255, 0.2);
+  z-index: -1;
+  transition: width 0.3s ease;
+}
+
+.btn:hover::before {
+  width: 100%;
+}
+
+.btn:hover {
+  box-shadow: var(--shadow-glow-strong);
+  text-shadow: 0 0 5px var(--text-main);
+}
+
+.btn.primary {
+  background: rgba(0, 246, 255, 0.1);
+  border-color: var(--primary-glow);
+}
+
+.btn.secondary {
+  border-color: var(--secondary-glow);
+  color: var(--secondary-glow);
+}
+
+.btn.secondary:hover {
+  box-shadow: 0 0 20px rgba(26, 155, 255, 0.5);
+  background: rgba(26, 155, 255, 0.1);
+}
+
+/* Specific Sections */
+
+/* Navigation */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 1.5rem 0;
+  z-index: var(--z-nav);
+  background: rgba(5, 7, 10, 0.8);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--glass-border);
+  transition: all 0.3s ease;
+}
+
+nav .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo span {
+  color: var(--primary-glow);
+}
+
+/* AI Reactor Animated Logo */
+.ai-reactor {
+  display: inline-block;
+  vertical-align: middle;
+  filter: drop-shadow(0 0 5px var(--primary-glow));
+}
+
+.nucleus-glow, .nucleus-cluster {
+  animation: pulseGlow 2s infinite alternate;
+}
+
+/* Base orbit paths are static, but the electrons revolve along them */
+.electron-ring {
+  transform-origin: 50px 50px;
+}
+
+.el-ring-1 {
+  /* Orbit 1 is angled at 30deg. We rotate the electron ring to match that tilt, 
+     then spin the dot around the center. */
+  animation: spinEl1 6s linear infinite;
+}
+
+.el-ring-2 {
+  /* Orbit 2 is angled at 30deg */
+  animation: spinEl2 8s linear infinite;
+}
+
+.el-ring-3 {
+  /* Orbit 3 is angled at -30deg */
+  animation: spinEl3 10s linear infinite;
+}
+
+@keyframes spinEl1 {
+  0% { transform: rotateZ(30deg) rotateX(60deg) rotateZ(0deg); }
+  100% { transform: rotateZ(30deg) rotateX(60deg) rotateZ(360deg); }
+}
+
+@keyframes spinEl2 {
+  0% { transform: rotateZ(30deg) rotateX(60deg) rotateZ(120deg); }
+  100% { transform: rotateZ(30deg) rotateX(60deg) rotateZ(480deg); }
+}
+
+@keyframes spinEl3 {
+  0% { transform: rotateZ(-30deg) rotateX(60deg) rotateZ(0deg); }
+  100% { transform: rotateZ(-30deg) rotateX(60deg) rotateZ(360deg); }
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links li a {
+  font-family: var(--font-subheading);
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  transition: color 0.3s;
+}
+
+.nav-links li a::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--primary-glow);
+  transition: width 0.3s ease;
+  box-shadow: var(--shadow-glow);
+}
+
+.nav-links li a:hover {
+  color: var(--primary-glow);
+}
+
+.nav-links li a:hover::after {
+  width: 100%;
+}
+
+/* SECTION 1 - HERO */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: 80px; /* Offset for nav */
+}
+
+.hero .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4rem;
+}
+
+.hero-content {
+  flex: 1;
+}
+
+.hero-content h1 {
+  font-size: 4rem;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(to right, #fff, var(--primary-glow));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: var(--shadow-glow);
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  margin-bottom: 2.5rem;
+  max-width: 600px;
+  font-family: var(--font-subheading);
+  letter-spacing: 0.5px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.hero-visual {
+  flex: 1;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-orb {
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  position: relative;
+  z-index: var(--z-ui);
+}
+
+.hero-orb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  animation: float 6s ease-in-out infinite, pulseGlow 4s infinite alternate;
+  box-shadow: 0 0 50px rgba(0, 246, 255, 0.4);
+}
+
+/* Holographic Rings */
+.holo-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 1px solid var(--primary-glow);
+  box-shadow: inset 0 0 15px rgba(0, 246, 255, 0.1), 0 0 15px rgba(0, 246, 255, 0.2);
+}
+
+.ring-1 {
+  width: 450px;
+  height: 450px;
+  border-top-color: transparent;
+  border-left-color: transparent;
+  animation: spin 10s linear infinite;
+}
+
+.ring-2 {
+  width: 500px;
+  height: 500px;
+  border-bottom-color: transparent;
+  border-right-color: transparent;
+  border-width: 2px;
+  opacity: 0.5;
+  animation: spin-reverse 15s linear infinite;
+}
+
+/* SECTION 2 - ABOUT */
+.about {
+  text-align: center;
+}
+
+.about .glass-panel {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.about p {
+  font-size: 1.2rem;
+  color: var(--text-muted);
+}
+
+/* SECTION 3 - FEATURES */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.feature-card {
+  text-align: left;
+}
+
+.feature-icon {
+  font-size: 2.5rem;
+  color: var(--primary-glow);
+  margin-bottom: 1.5rem;
+  text-shadow: var(--shadow-glow);
+}
+
+.feature-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.feature-card p {
+  color: var(--text-muted);
+}
+
+/* SECTION 4 - HOW IT WORKS */
+.workflow-diagram {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 4rem;
+}
+
+.workflow-node {
+  width: 300px;
+  text-align: center;
+  padding: 1.5rem;
+  border: 1px solid var(--primary-glow);
+  border-radius: 8px;
+  background: rgba(0, 246, 255, 0.05);
+  box-shadow: 0 0 15px rgba(0, 246, 255, 0.1);
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  transition: all 0.3s;
+}
+
+.workflow-node:hover {
+  background: rgba(0, 246, 255, 0.15);
+  box-shadow: 0 0 25px rgba(0, 246, 255, 0.3);
+  transform: scale(1.05);
+}
+
+.workflow-arrow {
+  height: 40px;
+  width: 2px;
+  background: var(--primary-glow);
+  position: relative;
+  box-shadow: 0 0 10px var(--primary-glow);
+  animation: scanLineVertical 2s linear infinite;
+}
+
+.workflow-arrow::after {
+  content: '▼';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--primary-glow);
+  font-size: 12px;
+  text-shadow: 0 0 5px var(--primary-glow);
+}
+
+/* SECTION 5 - DEVELOPMENT STATUS */
+.status-dashboard {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.status-dashboard p {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+}
+
+.progress-container {
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  height: 30px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.progress-bar {
+  height: 100%;
+  width: 75%; /* Status percentage */
+  background: linear-gradient(90deg, #005f73, var(--primary-glow));
+  box-shadow: 0 0 20px var(--primary-glow);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 1rem;
+  color: #05070a;
+  font-weight: bold;
+  font-family: var(--font-heading);
+}
+
+.progress-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  animation: shimmer 2s infinite;
+}
+
+/* Teams Sections */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.team-card {
+  text-align: center;
+  padding: 2rem;
+}
+
+.team-avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin: 0 auto 1.5rem auto;
+  border: 2px solid var(--primary-glow);
+  padding: 5px;
+  position: relative;
+}
+
+.team-avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #0f172a;
+}
+
+
+
+.team-card h4 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: #fff;
+}
+
+.team-card p {
+  color: var(--primary-glow);
+  font-family: var(--font-subheading);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+}
+
+.founder-section .team-card {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.founder-section .team-avatar {
+  width: 200px;
+  height: 200px;
+}
+
+/* Founders Container Layout */
+.founders-container {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin: 0 auto;
+  max-width: 900px;
+}
+
+.founders-container .team-card {
+  flex: 1;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.founders-container .team-avatar {
+  width: 180px;
+  height: 180px;
+}
+
+/* SECTION 8 - CONTACT */
+.contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  position: relative;
+}
+
+.form-control {
+  width: 100%;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid var(--glass-border);
+  padding: 1rem 1.5rem;
+  color: var(--text-main);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  border-radius: 4px;
+  transition: all 0.3s;
+  outline: none;
+}
+
+.form-control:focus {
+  border-color: var(--primary-glow);
+  box-shadow: 0 0 15px rgba(0, 246, 255, 0.2);
+}
+
+.form-control::placeholder {
+  color: var(--text-muted);
+  font-family: var(--font-subheading);
+}
+
+textarea.form-control {
+  min-height: 150px;
+  resize: vertical;
+}
+
+.contact-form .btn {
+  align-self: flex-start;
+}
+
+/* FOOTER */
+footer {
+  background: #030406;
+  border-top: 1px solid var(--glass-border);
+  padding: 4rem 0 2rem;
+  text-align: center;
+  position: relative;
+  z-index: var(--z-base);
+}
+
+.footer-logo {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  color: var(--text-main);
+  margin-bottom: 1rem;
+}
+
+.footer-logo span {
+  color: var(--primary-glow);
+  text-shadow: var(--shadow-glow);
+}
+
+.footer-tagline {
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+  font-family: var(--font-subheading);
+  letter-spacing: 1px;
+}
+
+.footer-copyright {
+  color: #475569;
+  font-size: 0.9rem;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  padding-top: 2rem;
+  margin-top: 2rem;
+}
+
+/* Utilities for JS animations */
+.hidden {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
+
+.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 1200px) {
+  .hero-content h1 {
+    font-size: 3.5rem;
+  }
+}
+
+@media (max-width: 968px) {
+  section {
+    padding: 4rem 0;
+  }
+  
+  .hero .container {
+    flex-direction: column;
+    text-align: center;
+    padding-top: 6rem;
+    gap: 2rem;
+  }
+  
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .hero-content p {
+    margin: 0 auto 2.5rem;
+  }
+  
+  .hero-buttons {
+    justify-content: center;
+  }
+  
+  .hero-visual {
+    margin-top: 2rem;
+  }
+  
+  .hero-content h1 {
+    font-size: 3rem;
+  }
+  
+  .hero-orb {
+    width: 300px;
+    height: 300px;
+  }
+  
+  .ring-1 {
+    width: 350px;
+    height: 350px;
+  }
+  
+  .ring-2 {
+    width: 400px;
+    height: 400px;
+  }
+  
+  .features-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .founders-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .founders-container .team-card {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none; /* Mobile menu hidden for simplicity, can be expanded later */
+  }
+  
+  .hero-content h1 {
+    font-size: 2.2rem;
+  }
+  
+  .hero-orb {
+    width: 220px;
+    height: 220px;
+  }
+  
+  .ring-1 {
+    width: 260px;
+    height: 260px;
+  }
+  
+  .ring-2 {
+    width: 300px;
+    height: 300px;
+  }
+  
+  .glass-panel {
+    padding: 1.5rem;
+  }
+  
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .workflow-node {
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  .progress-container {
+    height: 20px;
+  }
+  
+  .form-control {
+    padding: 0.8rem 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content h1 {
+    font-size: 1.8rem;
+  }
+  
+  .hero-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .btn {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .founders-container .team-avatar {
+    width: 140px;
+    height: 140px;
+  }
+}
